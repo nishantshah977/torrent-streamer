@@ -15,5 +15,5 @@ fileIndex - File Nummber you want to stream
 
 # Example Use 
 ``` 
-http://localhost:3000/stream/052AA1CC5D12A1D30CBA7051F6CC873E68E4332A/0
+http://localhost:3000/stream/D5FCCCC350BB1F09A354E76C2BD6D775C5E660A2/0
 ```
