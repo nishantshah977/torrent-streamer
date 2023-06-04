@@ -1,0 +1,19 @@
+{
+  "name": "torrent-streamer",
+  "version": "1.3.0",
+  "description": "Stream Torrent online without installing torrent client on your device.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^18.0.6",
+    "express": "^4.18.2",
+    "mime-types": "^2.1.35",
+    "node-fetch": "^3.2.6",
+    "torrent-stream": "^1.2.1"
+  }
+}
