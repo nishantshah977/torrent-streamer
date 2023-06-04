@@ -3,17 +3,14 @@ Stream Torrent online without installing torrent client on your device.
 # Package 
 ``` 
 npm init -y
-npm i torrent-stream express range-parser 
+npm i torrent-stream express
 ``` 
 # EndPoint 
 ``` 
-http://localhost:3000/stream/[InfoHash]/[fileIndex] 
+http://localhost:3000/stream?magnet=[magnet_url]
 ```
-**BreakDown** 
-InfoHash - Hash of the file
-fileIndex - File Nummber you want to stream 
 
 # Example Use 
 ``` 
-http://localhost:3000/stream/D5FCCCC350BB1F09A354E76C2BD6D775C5E660A2/0
+https://torrent-streamer-do9ascpla-nishantshah977.vercel.app/stream?magnet=magnet%3A%3Fxt%3Durn%3Abtih%3AF65DDE435BA7723BF8436D8D6F159C970ACED316
 ```
