@@ -15,6 +15,6 @@
     "mime-types": "^2.1.35",
     "node-fetch": "^3.2.6",
     "torrent-stream": "^1.2.1",
-    "archiver":"^5.3.1"
+    "archiver":"^5.3.0"
   }
 }
