@@ -59,9 +59,10 @@ app.get('/download', (req, res) => {
     if (videoFiles.length === 0) {
       return res.status(404).json({ error: 'No video files found in the torrent' });
     }
-const archive = archiver('zip');
+
     res.attachment('videos.zip');
     res.setHeader('Content-Type', 'application/octet-stream');
+    const archive = archiver('zip');
     archive.pipe(res);
     videoFiles.forEach((file) => {
       const readStream = file.createReadStream();
