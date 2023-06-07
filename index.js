@@ -1,7 +1,7 @@
 const torrentStream = require('torrent-stream');
 const express = require('express');
 const mime = require('mime-types');
-const archive = archiver('zip');
+const archive = require('archiver');
 const app = express();
 const port = 3000;
 
@@ -59,7 +59,7 @@ app.get('/download', (req, res) => {
     if (videoFiles.length === 0) {
       return res.status(404).json({ error: 'No video files found in the torrent' });
     }
-
+const archive = archiver('zip');
     res.attachment('videos.zip');
     res.setHeader('Content-Type', 'application/octet-stream');
     archive.pipe(res);
