@@ -1,7 +1,7 @@
 const torrentStream = require('torrent-stream');
 const express = require('express');
 const mime = require('mime-types');
-const archive = require('archiver');
+const archiver = require('archiver');
 const app = express();
 const port = 3000;
 
