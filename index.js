@@ -4,7 +4,7 @@ const mime = require('mime-types');
 const archiver = require('archiver');
 const app = express();
 const port = 3000;
-
+/*
 app.get('/stream', (req, res) => {
   const magnetLink = req.query.magnet;
   if (!magnetLink) {
@@ -42,10 +42,10 @@ app.get('/stream', (req, res) => {
     stream.pipe(res);
   });
 });
-
+*/
 app.get('/download', (req, res) => {
   const magnetURI = req.query.magnet;
-  if (!magnetURI) {
+  if (!magnetURI || magnetURI == "" || magnetURI == " ") {
     return res.status(400).json({ error: 'Magnet URI is required' });
   }
   const engine = torrentStream(magnetURI);
