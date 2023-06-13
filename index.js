@@ -44,8 +44,8 @@ app.get('/stream', (req, res) => {
 });
 
 
-app.get('/info/:magnetURI', (req, res) => {
-  const magnetURI = req.params.magnetURI;
+app.get('/info', (req, res) => {
+  const magnetURI = req.query.magnet;
   if (!magnetURI || magnetURI == "" || magnetURI == " ") {
     return res.status(400).json({ error: 'Magnet URI is required' });
   }
@@ -83,7 +83,7 @@ app.get('/info/:magnetURI', (req, res) => {
     </style>
 </head>
 <body>
-    <a href="/download/${magnetURI}" id="a"></a>
+    <a href="/download?magnet=${magnetURI}" id="a"></a>
     <script>
         document.getElementById('a').click();
     </script>
@@ -111,8 +111,8 @@ res.send(html);
 
 
 
-app.get('/download/:magnetURI', (req, res) => {
-  const magnetURI = req.query.magnetURI;
+app.get('/download', (req, res) => {
+  const magnetURI = req.query.magnet;
   if (!magnetURI || magnetURI == "" || magnetURI == " ") {
     return res.status(400).json({ error: 'Magnet URI is required' });
   }
