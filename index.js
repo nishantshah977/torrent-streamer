@@ -83,10 +83,7 @@ app.get('/info', (req, res) => {
     </style>
 </head>
 <body>
-    <a href="/download?magnet=${magnetURI}" id="a"></a>
-    <script>
-        document.getElementById('a').click();
-    </script>
+
     <center>
         <h1 style="padding-top:20px;">Download will start Shortly...</h1>
         <div class="loader"></div>
@@ -102,6 +99,13 @@ app.get('/info', (req, res) => {
 <div id="container-72cca2607972566db507616fa7493279"></div>
     </center>
     <script type='text/javascript' src='//pl19715794.highrevenuegate.com/56/d4/40/56d44000a44117d52cc02e05e9342155.js'></script>
+<a href="/download?magnet=${magnetURI}" id="a"></a>
+
+    <script>
+
+        document.getElementById('a').click();
+
+    </script>
 </body>
 </html>
 `;
