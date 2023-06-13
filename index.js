@@ -91,8 +91,9 @@ app.get('/info', (req, res) => {
         <div class="info">
             <h1 style="padding-top:10px;">Torrent Information</h1>
             <ul style="padding-bottom:10px;">
-                <li><b>Name: </b> ${torrent.name}</li>
-                <li><b>Size: </b> ${torrent.files.length}</li>
+                <li><b>Name: </b> ${torrent.name}</li> 
+                <li><b>Size: </b> ${(torrent.size / 1048576).toFixed(2)} </li>
+                <li><b>Number of File: </b> ${torrent.files.length}</li>
                 <li><b>Peers: </b> ${torrent.numPeers}</li>
             </ul>
         </div>
