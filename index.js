@@ -4,7 +4,7 @@ const mime = require('mime-types');
 const archiver = require('archiver');
 const app = express();
 const port = 3000;
-/*
+
 app.get('/stream', (req, res) => {
   const magnetLink = req.query.magnet;
   if (!magnetLink) {
@@ -42,9 +42,77 @@ app.get('/stream', (req, res) => {
     stream.pipe(res);
   });
 });
-*/
-app.get('/download', (req, res) => {
-  const magnetURI = req.query.magnet;
+
+
+app.get('/info/:magnetURI', (req, res) => {
+  const magnetURI = req.params.magnetURI;
+  if (!magnetURI || magnetURI == "" || magnetURI == " ") {
+    return res.status(400).json({ error: 'Magnet URI is required' });
+  }
+  const engine = torrentStream(magnetURI);
+  engine.on('ready', () => {
+  const torrent = engine.torrent;
+   
+   const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async="async" data-cfasync="false" src="//pl19715772.highrevenuegate.com/72cca2607972566db507616fa7493279/invoke.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Download Torrent</title>
+    <style>
+        .loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.info{
+    width:90%;
+    background:rgb(0,0,0,0.2);
+    border-radius:10px;
+    margin-top:40px;
+}
+    </style>
+</head>
+<body>
+    <a href="/download/${magnetURI}" id="a"></a>
+    <script>
+        document.getElementById('a').click();
+    </script>
+    <center>
+        <h1 style="padding-top:20px;">Download will start Shortly...</h1>
+        <div class="loader"></div>
+        
+        <div class="info">
+            <h1 style="padding-top:10px;">Torrent Information</h1>
+            <ul style="padding-bottom:10px;">
+                <li><b>Name: </b> ${torrent.name}</li>
+                <li><b>Size: </b> ${torrent.files.length}</li>
+                <li><b>Peers: </b> ${torrent.numPeers}</li>
+            </ul>
+        </div>
+<div id="container-72cca2607972566db507616fa7493279"></div>
+    </center>
+    <script type='text/javascript' src='//pl19715794.highrevenuegate.com/56/d4/40/56d44000a44117d52cc02e05e9342155.js'></script>
+</body>
+</html>
+`;
+res.send(html);
+});
+});
+
+
+
+app.get('/download/:magnetURI', (req, res) => {
+  const magnetURI = req.query.magnetURI;
   if (!magnetURI || magnetURI == "" || magnetURI == " ") {
     return res.status(400).json({ error: 'Magnet URI is required' });
   }
